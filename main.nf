@@ -6,9 +6,9 @@ params.pdb = '/mnt/OmicNAS/dd/rcsb-apo/1FDH_apo.pdb'
 
 process P2RANK {
 
-  container 'p2rank-tiruzer:latest'
+  container 'p2rank-tiruzer-1:latest'
 
- // storeDir "${params.cachedir}/${pdb.baseName}"
+ // storeDir "params.cachedir/{params.cachedir}/{pdb.baseName}"
 
   publishDir "${params.outdir}", mode: 'copy'
 
@@ -24,7 +24,7 @@ process P2RANK {
 
   shell:
     """
-    prank predict -threads ${params.cores} -o . -f ${pdb}
+    prank predict -threads params.cores−o.−f{params.cores} -o . -f {pdb}
     """
 }
 
