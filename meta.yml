@@ -1,0 +1,35 @@
+params:
+  - outdir:
+      type: file
+      description: path where output files will be deposited
+      required: true
+  - cachedir:
+      type: file
+      description: path to a cacheDir 
+      default: /mnt/OmicNAS/dd/p2rank/viz
+      required: false
+  - cores:
+      type: number
+      description: number of cpus for multithreading
+      default: 40
+      required: false
+input:
+  - pdb:
+      type: file
+      description: pdb file path
+output:
+  - log_file:
+      type: file
+      description: log file of the operation
+  - pocket_pred:
+      type: file
+      description: a csv file of predicted pockets, their scores, coordinates of their centers together with a list of adjacent residues, and a list of adjacent protein surface atoms
+  - resid_pred:
+      type: file
+      description: a csv file of  list of all residues from the input protein with their scores, mapping to predicted pockets and calibrated probability of being a ligand-binding residue
+  - pymol_viz:
+      type: file
+      description: a PYmol visualization script
+  - viz_points:
+      type: file
+      description: PYmol visualization script data files
